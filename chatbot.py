@@ -4,6 +4,7 @@ import dash
 from dash import dcc, html, callback, Input, Output,State
 import dash_bootstrap_components as dbc
 import requests
+from dash_iconify import DashIconify
 
 from chatterbot.logic import LogicAdapter
 
@@ -38,17 +39,17 @@ logic_adapters=[
     ]
 
 
-conversations={
+# conversations={
 
-    "hello",
-    "Hi There",
-    "How are you doing",
-    "I am doing great",
-    "That is good to hear",
-    "Thank you",
-    "you are welcome"
-}
-# trainer =ListTrainer(chatbot)
+#     "hello",
+#     "Hi There",
+#     "How are you doing",
+#     "I am doing great",
+#     "That is good to hear",
+#     "Thank you",
+#     "you are welcome"
+# }
+# # trainer =ListTrainer(chatbot)
 # trainer.train(conversations)
 
 trainer = ChatterBotCorpusTrainer(chatbot)
@@ -64,7 +65,7 @@ trainer.train(
 
 
 
-app=dash.Dash(__name__, external_stylesheets=[dbc.themes.QUARTZ])
+app=dash.Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
 
 app.layout=dbc.Container([
 
@@ -77,7 +78,11 @@ app.layout=dbc.Container([
      html.Br(),
      html.Br(),
     
-     html.H5(" Hey I am Liza "),
+     html.H5(" Hey I am Liza ",style={'display':'inline-block',"margin-right": "30px"}),
+     dbc.CardImg(src='assets\AVATAR_2.png',style={"width": "18rem",'border': '5px solid yellow',"border-radius": "50%",'display':'inline-block',"margin-left": "30px" },),
+     html.Br(),
+     html.Br(),
+     html.Br(),
      dcc.Input(id="input_Id",type="text",placeholder="text",value=""),
      
 
